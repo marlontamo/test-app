@@ -25,4 +25,8 @@ Route::group(['middleware' => 'auth'], function (){
             ->name('employee.list');
             Route::get('/employee/{id}', [App\Http\Controllers\Employee\EmployeeController::class,'show'])
             ->name('employee.show');
+            Route::get('/create', [App\Http\Controllers\Employee\EmployeeController::class,'create'])
+            ->name('employee.create');
+            Route::post('/save', [App\Http\Controllers\Employee\EmployeeController::class,'save'])
+            ->name('employee.save');
 });
