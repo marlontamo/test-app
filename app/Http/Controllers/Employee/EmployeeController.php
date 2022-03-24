@@ -9,20 +9,25 @@ use Illuminate\Http\Request;
 class EmployeeController extends Controller
 {
    public function index(){
-       return Employee::all();
-       return view('Employees.index');
+       $employees = Employee::all();
+       return view('Employees.index',compact('employees'));
    }
    public function show($id){
-       $index = $id;
-       return view('Employees.show',compact('index'));
+       $employee = Employee::findOrFail($id);
+       return view('Employees.show',compact('employee'));
    }
    public function create(){
     
        return view('Employees.create');
    }
    public function save(Request $request){
-       //this function is working
-       //cal the model then save data
-       return dd($request->all());
+         $employee = new Employee();
+         $employee->first_name = $request->first_name;
+         $employee->last_name = $request->last_name;
+         $employee->email =$request->email;
+         $employee->title = $request->title;
+         $employee->country= $request->country;
+         $employee->save();
+       return redirect('/employee');
    }
 }

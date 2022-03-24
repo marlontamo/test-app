@@ -22,6 +22,10 @@
                 <label for="inputTitle">Title</label>
                 <input type="text"name="title" class="form-control" id="inputTitle" placeholder="Title/Position">
             </div>
+            <div class="form-group">
+                <label for="inputTitle">Country</label>
+                <input type="text"name="country" class="form-control" id="inputTitle" placeholder="Country">
+            </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>
     </div>
