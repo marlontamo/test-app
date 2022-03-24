@@ -30,4 +30,19 @@ class EmployeeController extends Controller
          $employee->save();
        return redirect('/employee');
    }
+   public function edit($id){
+    $employee = Employee::findOrFail($id);
+    return view('Employees.edit',compact('employee'));
+   }
+   public function update(Request $request){
+    
+    $employee = Employee::findOrFail($request->id);
+    $employee->first_name = $request->first_name;
+    $employee->last_name = $request->last_name;
+    $employee->email =$request->email;
+    $employee->title = $request->title;
+    $employee->country= $request->country;
+    $employee->save();
+  return redirect('/employee/'.$request->id);
+   }
 }

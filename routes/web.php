@@ -29,4 +29,8 @@ Route::group(['middleware' => 'auth'], function (){
             ->name('employee.create');
             Route::post('/save', [App\Http\Controllers\Employee\EmployeeController::class,'save'])
             ->name('employee.save');
+            Route::get('/edit/{id}', [App\Http\Controllers\Employee\EmployeeController::class,'edit'])
+            ->name('employee.edit');
+            Route::post('/update', [App\Http\Controllers\Employee\EmployeeController::class,'update'])
+            ->name('employee.update');
 });

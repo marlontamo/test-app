@@ -11,6 +11,7 @@
       <p class="card-text">Email:{{$employee->email}}</p>
       <p class="card-text">Position:{{$employee->title}}</p>
       <p class="card-text">Country: {{$employee->country}}</p>
+      <a href="/edit/{{$employee->id}}" class="btn btn-warning btn-xs">Edit</a>
      
     </div>
   </div>
