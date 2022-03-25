@@ -51,10 +51,10 @@
                                     <a class="nav-link" href="/employee">{{ __('Employee') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/employee">{{ __('Customer') }}</a>
+                                    <a class="nav-link" href="/Customer">{{ __('Customer') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/employee">{{ __('Invoice') }}</a>
+                                    <a class="nav-link" href="/Invoice">{{ __('Invoice') }}</a>
                                 </li>
                     </ul>
 
