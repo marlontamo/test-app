@@ -24,6 +24,14 @@
     body{
         font-family: sans-serif;
     }
+    .card{
+        border: 10px solid rgba(0, 0, 0, 0.125);
+    }
+    form{
+        border: 5px solid #333;
+        padding: 5px;
+        border-radius: 5px;
+    }
 </style>
 <body>
     <div id="app">
