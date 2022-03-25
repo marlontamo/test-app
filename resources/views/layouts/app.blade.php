@@ -50,6 +50,12 @@
                     <li class="nav-item">
                                     <a class="nav-link" href="/employee">{{ __('Employee') }}</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/employee">{{ __('Customer') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/employee">{{ __('Invoice') }}</a>
+                                </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
