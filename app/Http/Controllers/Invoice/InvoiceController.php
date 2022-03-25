@@ -2,42 +2,49 @@
 
 namespace App\Http\Controllers\Invoice;
 
+use App\Models\Invoice;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
     public function index()
-    {
-         return view('Invoice.index');
-        //return view('Employees.index',compact('employees'));
+    {    $invoices = Invoice::all();
+         return view('Invoice.index',compact('invoices'));
+       
     }
-    public function show()
+    public function show($id)
     {
-        return view('Invoice.show');
-        //return view('Employees.show',compact('employee'));
+        $invoice = Invoice::findOrFail($id);
+        return view('Invoice.show',compact('invoice'));
+       
     }
     public function create()
     {
         return view('Invoice.create');
-        //return view('Employees.create');
+      
     }
     public function save(Request $request)
     {
-         
-        return redirect('/employee');
+         $invoice = new Invoice();
+         $invoice->name = $request->name;
+         $invoice->total = $request->total;
+         $invoice->save();
+        return redirect('/Invoice');
     }
-    public function edit()
+    public function edit($id)
     {
+        $invoice = Invoice::findOrFail($id); 
+         return view('Invoice.edit',compact('invoice'));
         
-         return view('Invoice.edit');
-         //return view('Employees.edit',compact('employee'));
     }
-    public function update()
+    public function update(Request $request)
     {
      
-        
-         
-         return redirect('/employee/'.$request->id);
+         $invoice = Invoice::findOrFail($request->id);
+         $invoice->name = $request->name;
+         $invoice->total = $request->total;
+         $invoice->save();
+          return redirect('/invoice/'.$request->id);
     }
 }

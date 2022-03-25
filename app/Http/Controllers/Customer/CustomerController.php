@@ -4,40 +4,52 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Customer;
 
 class CustomerController extends Controller
 {
     public function index()
-    {
-         return view('Customer.index');
+    {    $customers = Customer::all();
+         return view('Customer.index',compact('customers'));
         //return view('Employees.index',compact('employees'));
     }
-    public function show()
-    {
-        return view('Customer.show');
-        //return view('Employees.show',compact('employee'));
+    public function show($id)
+    {   
+        $customer = Customer::findOrFail($id);
+        return view('Customer.show',compact('customer'));
+       
     }
     public function create()
     {
         return view('Customer.create');
-        //return view('Employees.create');
+       
     }
     public function save(Request $request)
     {
-         
-        return redirect('/employee');
+         $customer = new Customer();
+         $customer->first_name = $request->first_name;
+         $customer->last_name = $request->last_name;
+         $customer->email = $request->email;
+         $customer->company =$request->company;
+         $customer->save();
+        return redirect('/Customer');
     }
-    public function edit()
+    public function edit($id)
     {
+        $customer = Customer::findOrFail($id);
+         return view('Customer.edit',compact('customer'));
         
-         return view('Customer.edit');
-         //return view('Employees.edit',compact('employee'));
     }
     public function update(Request $request)
     {
-     
-        
+         //return dd($request->id);
+         $customer = Customer::findOrFail($request->id);
+         $customer->first_name = $request->first_name;
+         $customer->last_name = $request->last_name;
+         $customer->email = $request->email;
+         $customer->company =$request->company;
+         $customer->save();
          
-         return redirect('/employee/'.$request->id);
+         return redirect('/customer-show/'.$request->id);
     }
 }

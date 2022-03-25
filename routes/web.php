@@ -27,21 +27,28 @@ Route::group(['middleware' => 'auth'], function (){
             //Customer
             Route::get('/Customer', [App\Http\Controllers\Customer\CustomerController::class,'index'])
             ->name('customer.list');
-            Route::get('/customershow', [App\Http\Controllers\Customer\CustomerController::class,'show'])
+            Route::get('/customer-show/{id}', [App\Http\Controllers\Customer\CustomerController::class,'show'])
             ->name('customer.show');
-            Route::get('/customercreate', [App\Http\Controllers\Customer\CustomerController::class,'create'])
+            Route::get('/cust-create', [App\Http\Controllers\Customer\CustomerController::class,'create'])
             ->name('customer.create');
-            Route::get('/customeredit', [App\Http\Controllers\Customer\CustomerController::class,'edit'])
+            Route::get('/customer-edit/{id}', [App\Http\Controllers\Customer\CustomerController::class,'edit'])
             ->name('customer.edit');
+            Route::post('/customer-save', [App\Http\Controllers\Customer\CustomerController::class,'save']);
+            Route::post('/customer-update', [App\Http\Controllers\Customer\CustomerController::class,'update'])
+            ->name('customer.update');
             //Invoice
             Route::get('/Invoice', [App\Http\Controllers\Invoice\InvoiceController::class,'index'])
             ->name('invoice.list');
-            Route::get('/invoiceshow', [App\Http\Controllers\Invoice\InvoiceController::class,'show'])
+            Route::post('/invoicesave', [App\Http\Controllers\Invoice\InvoiceController::class,'save'])
+            ->name('invoice.save');
+            Route::get('/invoice/{id}', [App\Http\Controllers\Invoice\InvoiceController::class,'show'])
             ->name('invoice.show');
-            Route::get('/invoicecreate', [App\Http\Controllers\Invoice\InvoiceController::class,'create'])
+            Route::get('/invoice-create', [App\Http\Controllers\Invoice\InvoiceController::class,'create'])
             ->name('invoice.create');
-            Route::get('/invoiceedit', [App\Http\Controllers\Invoice\InvoiceController::class,'edit'])
+            Route::get('/invoice-edit/{id}', [App\Http\Controllers\Invoice\InvoiceController::class,'edit'])
             ->name('invoice.edit');
+            Route::post('/invoice-update', [App\Http\Controllers\Invoice\InvoiceController::class,'update'])
+            ->name('invoice.update');
 
 });
 
